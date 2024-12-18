@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expandable Pricing Boxes</title>
+  <style>
+    /* General Styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f8f8f8;
+      flex-direction: column;
+    }
+
+    /* Main Container */
+    .container {
+      width: 400px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #ff4081;
+      margin-bottom: 20px;
+    }
+
+    /* Box Styling */
+    .box {
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      padding: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .box:hover {
+      border-color: #ff4081;
+    }
+
+    /* Expanded Box */
+    .box.expanded {
+      border-color: #ff4081;
+      background-color: #ffebf3;
+    }
+
+    /* Box Header (Units and Price) */
+    .box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .box-header div {
+      flex: 1;
+    }
+
+    /* Unit and Tag Styling */
+    .box-header .unit {
+      text-align: left;
+      font-weight: bold;
+    }
+
+    .box-header .tag {
+      background-color: #ff4081;
+      color: #fff;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 5px;
+    }
+
+    /* Price Styling */
+    .price {
+      font-weight: bold;
+      font-size: 16px;
+      color: #333;
+      text-align: right;
+    }
+
+    .strike {
+      text-decoration: line-through;
+      color: #aaa;
+      font-size: 12px;
+    }
+
+     /* Most Popular Badge */
+     .most-popular {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background-color: #ff4081;
+      color: #fff;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 5px;
+      text-transform: uppercase;
+    }
+
+    /* Form (Size & Colour) */
+    .form {
+      display: none;
+      margin-top: 10px;
+      text-align: left;
+    }
+
+    .form select {
+      padding: 5px;
+      border-radius: 5px;
+      margin: 5px 0;
+      width: 100px;
+    }
+
+    /* Expanded Form */
+    .box.expanded .form {
+      display: block;
+    }
+
+  /* Delivery Text  */
+.delivery {
+  color: #ff4081;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: left;  /* Align text to the left */
+  width: 100%;       /* Ensure it takes full width */
+}
+
+
+    /* Add to Cart Button */
+    .add-to-cart {
+      background-color: #ff4081;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+      padding: 12px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    .add-to-cart:hover {
+      background-color: #e73370;
+    }
+  </style>
+</head>
+<body>
+  <!-- Main Container -->
+  <div class="container">
+    <h2>YAY! It's BOGO</h2>
+
+    <!-- Box 1 (Top) -->
+    <div class="box" onclick="expandBox(this, 10)">
+      <div class="box-header">
+        <div class="unit">1 Unit <span class="tag">10% Off</span></div>
+        <div class="price">$10.00 USD <span class="strike">$12.00 USD</span></div>
+      </div>
+
+      <!-- Form Section -->
+      <div class="form">
+        <div>
+          <label>#1 </label>
+          <select>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option> <!-- New size added -->
+          </select>
+          <!-- <label>Colour: </label> -->
+          <select>
+            <option>Red</option>
+            <option>Blue</option>
+            <option>Green</option>
+            <option>Yellow</option> <!-- New color added -->
+          </select>
+        </div>
+        <div class="form">
+          <label>#2 </label>
+          <select>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+          </select>
+          <!-- <label>Colour: </label> -->
+          <select>
+            <option>Red</option>
+            <option>Blue</option>
+            <option>Green</option>
+            <option>Black</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Box 2 (Middle) -->
+    <div class="box" onclick="expandBox(this, 18)">
+      <div class="box-header">
+        <div class="unit">2 Unit <span class="tag">20% Off</span></div>
+        <div class="price">$18.00 USD <span class="strike">$24.00 USD</span></div>
+      </div>
+
+      <!-- Form Section -->
+      <div class="form">
+        <div>
+          <label>#1 </label>
+          <select>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option> <!-- New size added -->
+          </select>
+          <!-- <label>Colour: </label> -->
+          <select>
+            <option>Red</option>
+            <option>Blue</option>
+            <option>Green</option>
+            <option>Yellow</option> <!-- New color added -->
+          </select>
+        </div>
+        <div class="form">
+          <label>#2 </label>
+          <select>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+          </select>
+          <!-- <label>Colour: </label> -->
+          <select>
+            <option>Red</option>
+            <option>Blue</option>
+            <option>Green</option>
+            <option>Black</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Box 3 (Bottom) -->
+    <div class="box" onclick="expandBox(this, 24)">
+      <div class="box-header">
+        <div class="unit">3 Unit <span class="tag">30% Off</span></div>
+        <div class="price">$24.00 USD <span class="strike">$36.00 USD</span></div>
+      </div>
+
+      <!-- Form Section -->
+      <div class="form">
+        <div>
+          
+          <label>#1 </label>
+          <select>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option> <!-- New size added -->
+          </select>
+          <!-- <label>Colour: </label> -->
+          <select>
+            <option>Red</option>
+            <option>Blue</option>
+            <option>Green</option>
+            <option>Yellow</option> <!-- New color added -->
+          </select>
+        </div>
+        <div class="form">
+          <label>#2 </label>
+          <select>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+          </select>
+          <!-- <label>Colour: </label> -->
+          <select>
+            <option>Red</option>
+            <option>Blue</option>
+            <option>Green</option>
+            <option>Black</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Free Delivery -->
+    <div class="delivery">Free Delivery</div>
+    <div class="price">Total: <strong id="total-price">$18.00 USD</strong></div>
+
+    <!-- Add to Cart Button -->
+    <button class="add-to-cart">+ Add to Cart</button>
+  </div>
+
+  <script>
+    // Expand Selected Box and Collapse Others
+    function expandBox(selectedBox, price) {
+      const boxes = document.querySelectorAll('.box');
+      boxes.forEach(box => {
+        if (box === selectedBox) {
+          box.classList.add('expanded');
+        } else {
+          box.classList.remove('expanded');
+        }
+      });
+
+      // Update total price
+      const totalPriceElement = document.getElementById('total-price');
+      totalPriceElement.textContent = `$${price.toFixed(2)} USD`;
+    }
+  </script>
+</body>
+</html>
